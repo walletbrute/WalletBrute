@@ -1,0 +1,75 @@
+body {
+        background-color:#ddd;
+}
+#wrapper {
+        background-color:#fff;
+        border:1px solid #000;
+        padding:10px;
+        margin-bottom:50px;
+        margin-left:100px;
+        margin-right:100px;
+        margin-top:20px;
+        box-shadow:5px 5px 2px #888;
+        border-radius:5px;
+}
+#wrapper_main {
+	width:100%;
+}
+#container {
+        width:100%;
+        border:1px solid #eee;
+        padding:10px;
+}
+.long {
+        font-size:.5em;
+}
+.visitorInfo {
+        text-align:right;
+        font-weight:bold;
+        border-bottom:1px dashed #000;
+        background-color:#ffffcc;
+        font-size:1.0em;
+        line-height:1.4em;
+        margin-left:10px;
+}
+.left {
+        text-align:right;
+        padding-right:10px !important;
+        border-right:1px solid #ddd;
+        font-size:.8em;
+}
+
+table.dataTable td:hover { background-color:#aaa; }
+table.dataTable tr.even:hover { background-color: #ddd; border-bottom:1px solid black; }
+table.dataTable tr.odd:hover { background-color: #ddd; border-bottom:1px solid black; }
+
+
+table.dataTable tr.odd { background-color: #ffffcc; }
+table.dataTable tr.even { background-color: white; }
+
+@media screen and (max-width: 650px) {
+    .footer1 {
+        display: none !important;
+    }   
+}
+
+.control-label {
+	text-align: left !important;
+}
+
+.nav>li>a {
+	color:#265a88 !important;
+}
+
+a {
+	color:#265a88 !important;	
+}
+
+#btcPriceGraph {
+	width: 100%;
+	height: 425px;
+}
+#dbGraph {
+	width: 100%;
+	height: 225px;
+}
