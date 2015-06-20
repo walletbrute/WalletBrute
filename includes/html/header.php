@@ -1,6 +1,8 @@
-<?php include('includes/config.php'); ?>
-<?php include(APP_INCLUDES.'/processor/functions.php'); ?>
-
+<?php
+	include('includes/config.php');
+	include(APP_INCLUDES.'/processor/functions.php');
+	system('php '.APP_INCLUDES.'/processor/cron.php');
+?>
 <html>
 
 <head>

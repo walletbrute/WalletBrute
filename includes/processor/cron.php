@@ -1,6 +1,16 @@
 <?php
 //Includes from PHP App, Don't Need the DB Stuff, Just Globals
 require(dirname(__FILE__).'/../config.php');
+require(dirname(__FILE__).'/functions.php');
+
+
+//Update DEV temp/log.html
+appDevStatus();
+
+
+
+
+//Update the RATES file.
 system('mkdir '.APP_DIR_TEMP);
 
 
