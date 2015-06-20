@@ -1,5 +1,4 @@
 # README #
-
 Welcome to WalletBrute. Here are a few hints for the install and other resources.
 
 ### Install Instructions ###
