@@ -90,8 +90,14 @@ $( document ).ready(function() {
 	    	ion.sound.play("branch_break");
 	};
 
+	
 	// Load Wallets
 	showWallets();
+	setInterval (function(){
+		$('#wallets_found').dataTable()._fnAjaxUpdate();
+	},1000);
+
+	
 	showRates();
 	
 	// Fade In Loader

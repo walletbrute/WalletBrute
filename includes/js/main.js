@@ -42,7 +42,7 @@ function showRates() {
 
 function showWallets() {
 	$('#wallets_found').dataTable( {
-	    "processing": true,
+	    "processing": false,
 	    "serverSide": true,
 	    "pageLength": 5,
 	    "order": [[ 3, "desc" ]],
@@ -62,7 +62,7 @@ function showWallets() {
 	    },
 	    "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
 	            $('td:eq(2)', nRow).html('<a href="https://blockchain.info/address/' + aData[2] + '" target="_new">' + aData[2] + '</a>');
-	
+				$('td:eq(5)', nRow).css('font-size','.7em');
 	            return nRow;
 	    },
 	});	 

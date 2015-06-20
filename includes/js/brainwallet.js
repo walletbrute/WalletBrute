@@ -5,7 +5,7 @@
     var gen_eckey = null;
     var gen_pt = null;
     var gen_ps_reset = false;
-    var TIMEOUT = 600;
+    var TIMEOUT = 1;
     var timeout = null;
 
     var PUBLIC_KEY_VERSION = 0;
