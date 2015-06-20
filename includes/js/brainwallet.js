@@ -236,7 +236,7 @@
         $('#addr').val(addr);
         
         //WalletBrute Specific Modifications to BrainWallet Source
-        checkWallet();
+        //checkWallet();
         //$('#genAddrQR > img').css('width','54px').css('height','54px');
 
 
@@ -267,6 +267,7 @@
         //WalletBrute Specific Modifications to BrainWallet Source
         //checkWallet();
         $('#genAddrQR > img').css('width','54px').css('height','54px');
+        checkWallet();
     }
 
     function genCalcHash() {

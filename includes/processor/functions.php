@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__).'../config.php');
+include(dirname(__FILE__).'/../config.php');
 function appVersion() {
     system('git log --pretty=format:"%h" -n 1');
 }
@@ -8,5 +8,9 @@ function appDevStatus() {
 }
 function appCurVer() {
 	system('git log -1 --pretty=format:"%h"');
+}
+// Function for basic field validation (present and neither empty nor only white space
+function IsNullOrEmptyString($question){
+    return (!isset($question) || trim($question)==='');
 }
 ?>
