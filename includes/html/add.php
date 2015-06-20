@@ -15,7 +15,7 @@
       <div class="input-group">
         <input class="form-control" id="pass" placeholder="Enter a password or phrase..." type="text" autofocus/>
         <div class="input-group-btn">
-            <button class="btn btn-primary" type="" id="submitWalletCheck" onClick="var guess = $('#pass').val(); var guessAddr = $('#addr').val(); checkWallet(guess,guessAddr); return false;">Check Wallet!</button>
+            <button class="btn btn-primary" type="" id="submitWalletCheck" onClick="var guess = $('#pass').val(); var guessAddr = $('#addr').val(); checkWallet(guess,guessAddr); return false;">Lookup Wallet!</button>
         </div>
       </div> 
     </div>
@@ -57,24 +57,29 @@
     <div class="col-lg-10 controls">
       <textarea class="form-control" id="der" readonly="readonly" rows="5" title="ASN.1 DER-encoded ECDSA private key (OpenSSL)"></textarea>
     </div>
-  </div>
+  </div>-->
   <div class="form-group">
     <label class="col-lg-2 control-label" for="pub">Public Key</label>
     <div class="col-lg-10 controls">
       <textarea class="form-control" id="pub" readonly="readonly" rows="2" title="SEC1-encoded ECDSA public key (OpenSSL)"></textarea>
     </div>
   </div>
-  <div class="form-group">
+  <!--<div class="form-group">
     <label class="col-lg-2 control-label" for="h160">HASH160</label>
     <div class="col-lg-10 controls">
       <input class="form-control" id="h160" readonly="readonly" title="Hex-encoded address, RIPEMD160(SHA256(Public Key))" type="text" />
     </div>
   </div>-->
+  <div class="form-group">
+    <label class="col-lg-2 control-label" for="pub">Lookup Results</label>
+    <div class="col-lg-10 controls">
+	    <pre style="float:right;margin-left:5px;min-height:39px;"><a href="#" id="genAddrURL" target="_blank" title="Click to view address history (external link)"><span id="genAddrQR"></span></a></pre>
+      	<pre id="walletCheckResults" style="">
+		</pre>
+    </div>
+  </div>   
 </fieldset>
 </form>
-
-<div id="walletCheckResults" style="display:none;margin-top:20px;">
-</div>
 
 <hr>
 
@@ -98,8 +103,3 @@
 <!-- The container for the uploaded files -->
 <pre id="files" class="files" style="font-size:.8em;display:none;"></pre>
 <br>
-<script>
-//$('#pass').keyup(function(){
-//	$('#submitWalletCheck').click();
-//});
-</script>

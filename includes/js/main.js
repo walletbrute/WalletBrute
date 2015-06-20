@@ -109,12 +109,14 @@ function checkWalletBatch() {
 		}
 	});	
 }*/
-function checkWallet(guess,guessAddr) {
+function checkWallet() {
+	var guess = $('#pass').val();
+	var guessAddr = $('#addr').val();
 	//alert(guess,guessAddr);
 	$('#walletCheckAPIPre').html('');
-	$('#walletCheckResults').show();
+	//$('#walletCheckResults').show();
 	//$('#walletCheckInput').hide();
-	$('#walletCheckResults').html('<center><pre><img style="height:200px;" src="includes/images/loader.gif" style="text-align:center;margin-bottom:0px;padding-bottom:-20px;"></pre></center>');
+	$('#walletCheckResults').html('<center><img style="height:200px;" src="includes/images/loader.gif" style="text-align:center;margin-bottom:0px;padding-bottom:-20px;"></center>');
 	$('#walletCheckLoader').show();
 	$.ajax({
         type: 'GET',
@@ -122,7 +124,7 @@ function checkWallet(guess,guessAddr) {
 		success: function(response){
 			//var done = function(){
 				$("#walletCheckLoader").hide();
-				$("#walletCheckResults").html('<pre id="walletCheckAPIPre"></pre>');
+				$("#walletCheckResults").html('<div id="walletCheckAPIPre"></div>');
 				
 				var div = document.getElementById('walletCheckAPIPre');
 				div.innerHTML = div.innerHTML + 'Passphrase: '+guess+'...\n';

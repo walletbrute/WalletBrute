@@ -50,31 +50,14 @@
 
 <script>
 $( document ).ready(function() {
-
-//$('#pass').on("keyup", function() {
-//  submitPhraseCheck();
-//});
 	
-/*$('#pass').keyup(function() {
-  setTimeout(function() {
-    if ($('#pass').val().length > 0)
-	var guess = $('#pass').val(); 
-	var guessAddr = $('#addr').val();
-    checkWallet(guess,guessAddr);
-  }, 1000);
-});	*/
-
-
-var count = 0;
-var pass = $('#pass').val();
-var addr = $('#addr').val();
-setInterval(function(){
-  	count = count +1;
-	if (pass == $('#pass').val()) {	
-	} else {
-		checkWallet(pass,addr);	
-	}
-}, 1000);
+	//Check Wallet Every Stroke
+	$('#pass').keypress(function(e){
+		var pass = $(this).val();
+		var addr = $('#addr').val();
+		var code = String.fromCharCode(e.which);
+		checkWallet(code);		
+	});
 
 
 	// Load and Initialize Sounds

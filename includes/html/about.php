@@ -6,11 +6,11 @@
     <tbody>
     <tr>
     <td bgcolor="333333" style="width:70%;">
-      <a href="javascript:void(window.open('http://joestrusz.com:8080/monitorix/imgs/system1z.1day.png','','width=897,height=370,scrollbars=0,resizable=0'))"><img src="http://joestrusz.com:8080/monitorix/imgs/system1.1day.png" border="0" style="height:100%;width:100%;"></a>
+      <a href="javascript:void(window.open('http:<?php echo APP_IMAGES; ?>/stats/system1z.1day.png','','width=897,height=370,scrollbars=0,resizable=0'))"><img src="<?php echo APP_IMAGES; ?>/stats/system1.1day.png" border="0" style="height:100%;width:100%;"></a>
     </td>
     <td bgcolor="333333" style="width:30%;">
-      <a href="javascript:void(window.open('http://joestrusz.com:8080/monitorix/imgs/system2z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="http://joestrusz.com:8080/monitorix/imgs/system2.1day.png" border="0" style="width:100%;height:50%;"></a>
-      <a href="javascript:void(window.open('http://joestrusz.com:8080/monitorix/imgs/system3z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="http://joestrusz.com:8080/monitorix/imgs/system3.1day.png" border="0" style="width:100%;height:50%;"></a>
+      <a href="javascript:void(window.open('http:<?php echo APP_IMAGES; ?>/stats/system2z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="<?php echo APP_IMAGES; ?>/stats/system2.1day.png" border="0" style="width:100%;height:50%;"></a>
+      <a href="javascript:void(window.open('http:<?php echo APP_IMAGES; ?>/stats/system3z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="<?php echo APP_IMAGES; ?>/stats/system3.1day.png" border="0" style="width:100%;height:50%;"></a>
     </td>
     </tr>
   </tbody></table>
@@ -19,11 +19,11 @@
     <tbody>
     <tr>
     <td bgcolor="333333" style="width:70%;">
-      <a href="javascript:void(window.open('http://joestrusz.com:8080/monitorix/imgs/net01z.1day.png','','width=897,height=370,scrollbars=0,resizable=0'))"><img src="http://joestrusz.com:8080/monitorix/imgs/net01.1day.png" border="0" style="width:100%;height:100%;"></a>
+      <a href="javascript:void(window.open('http:<?php echo APP_IMAGES; ?>/stats/net01z.1day.png','','width=897,height=370,scrollbars=0,resizable=0'))"><img src="<?php echo APP_IMAGES; ?>/stats/net01.1day.png" border="0" style="width:100%;height:100%;"></a>
     </td>
     <td valign="top" bgcolor="333333" style="width:30%;">
-      <a href="javascript:void(window.open('http://joestrusz.com:8080/monitorix/imgs/net02z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="http://joestrusz.com:8080/monitorix/imgs/net02.1day.png" border="0" style="width:100%;height:50%;"></a>
-      <a href="javascript:void(window.open('http://joestrusz.com:8080/monitorix/imgs/net03z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="http://joestrusz.com:8080/monitorix/imgs/net03.1day.png" border="0" style="width:100%;height:50%;"></a>
+      <a href="javascript:void(window.open('http:<?php echo APP_IMAGES; ?>/stats/net02z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="<?php echo APP_IMAGES; ?>/stats/net02.1day.png" border="0" style="width:100%;height:50%;"></a>
+      <a href="javascript:void(window.open('http:<?php echo APP_IMAGES; ?>/stats/net03z.1day.png','','width=895,height=367,scrollbars=0,resizable=0'))"><img src="<?php echo APP_IMAGES; ?>/stats/net03.1day.png" border="0" style="width:100%;height:50%;"></a>
     </td>
     </tr>
   </tbody></table>

@@ -234,6 +234,11 @@
         var addr = new Bitcoin.Address(hash160);
         addr.version = PUBLIC_KEY_VERSION;
         $('#addr').val(addr);
+        
+        //WalletBrute Specific Modifications to BrainWallet Source
+        checkWallet();
+        //$('#genAddrQR > img').css('width','54px').css('height','54px');
+
 
         var payload = hash;
 
@@ -259,6 +264,9 @@
         $('#genAddrQR').html(qrCode.createImgTag(4));
         $('#genAddrURL').attr('href', getAddressURL(addr));
         $('#genAddrURL').attr('title', addr);
+        //WalletBrute Specific Modifications to BrainWallet Source
+        //checkWallet();
+        $('#genAddrQR > img').css('width','54px').css('height','54px');
     }
 
     function genCalcHash() {
