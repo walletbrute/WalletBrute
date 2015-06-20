@@ -1,5 +1,5 @@
 <blockquote>
-	<p>Are you kidding? We don't even know. Yet.</p>
+	<p>Are you kidding? We don't even know. But here are the live system resource statistics.</p>
 </blockquote>
 <div style="display: block;padding: 9.5px;margin: 0 0 10px;font-size: 13px;line-height: 1.42857143;color: #333;word-break: break-all;word-wrap: break-word;background-color: #f5f5f5;border: 1px solid #ccc;border-radius: 4px;text-align:center;margin-left:auto;margin-right:auto;">
 <table cellspacing="5" cellpadding="0" width="1" bgcolor="f5f5f5" border="1" style="width:100%;">
