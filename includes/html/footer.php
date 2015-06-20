@@ -6,7 +6,7 @@
                 &copy; 2015 <a href="http://walletbrute.com">walletbrute.com</a> <b>|</b> <a href="mailto:walletbrute@gmail.com">walletbrute@gmail.com</a>
         </div>
         <div class="footer2" style="float:right;text-align:right;">
-                <!--Not Licensed to the Public-->&nbsp;
+                <div style="display:inline;padding:2px;border-left:1px dashed #ddd;border-top:1px dashed #ddd;border-right:1px dashed #ddd;"><a  href="https://github.com/walletbrute/Wallet-Brute"><span style="font-size:1em;">DOWNLOAD</span><img src="<?php echo APP_IMAGES; ?>/github.png" style="margin-left:3px;height:20px;"></a></div>
 				<div style="border-top:1px solid #ddd;"></div>
                 Application Version: <span style="font-weight:bolder;background-color:#ddd;border-bottom:1px dashed #000;" id="appVersion"><?php appVersion(); ?></span>
         </div>

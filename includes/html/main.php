@@ -20,10 +20,7 @@
 	<div class="tab-pane fade" id="dev_tab" name="install_db_tab">
 	<h2>Development Status</h2>
 	<hr>
-		<blockquote>
-			<p>Here you can find the latest version and commit history.</p>
-		</blockquote>
-		<pre style="font-size:.8em;"><?php appDevStatus(); ?></pre>
+	<?php include('dev.php'); ?>
 	</div>	
 
     <div class="tab-pane fade" id="view_tab">
