@@ -103,7 +103,9 @@ $( document ).ready(function() {
 	setInterval (function(){
 		$('#wallets_found').dataTable()._fnAjaxUpdate();
 	},5000);
-
+	setInterval (function(){
+		dbStatus();
+	},500);
 	
 	showRates();
 	
@@ -168,7 +170,9 @@ $( document ).ready(function() {
 <div id="wrapper" style="display:none;">
 <div id="error_log" style="width:100%;font-size:.8em;"></div>
 
-<a href="/" style="text-decoration:none;color:#000;vertical-align:bottom;"><img src="<?php echo APP_IMAGES; ?>/logo.png" style="float:left;max-height:50px;margin-right:5px;margin-top:5px;"><span style="font-size:3em;font-weight:bolder;color:#000;border-bottom:1px solid #265a88;"><?php echo APP_TITLE; ?></span></a>
+<a href="/" style="text-decoration:none;color:#000;vertical-align:bottom;"><img src="<?php echo APP_IMAGES; ?>/logo.png" style="float:left;max-height:50px;margin-right:5px;margin-top:5px;"><span style="font-size:3em;font-weight:bolder;color:#000;border-bottom:1px solid #265a88;"><?php echo APP_TITLE; ?></span></a><br />
+<div style="margin-left:60px;" id="dbStatus">
+</div>
 
 <div id="visitor_information_header" style="float:right;text-align:right;">
 	<?php echo date('l F jS Y').' <span id="clock"></span><br />'; ?>

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include(dirname(__FILE__).'/../config.php');
 function appVersion() {
     system('git log --pretty=format:"%h" -n 1');

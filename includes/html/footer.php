@@ -1,4 +1,4 @@
-<div style="border-top:1px solid #ddd;text-align:left;padding-top:20px;height:60px;">
+<div style="border-top:1px solid #ddd;text-align:left;padding-top:20px;height:100px;">
         <div class="footer1" style="float:left;text-align:left;">
 	        	<img src="<?php echo APP_IMAGES; ?>/logo.png" style="height:30px;float:left;margin-top:5px;margin-right:10px;">
                 Information found on this site is purely for research purposes.

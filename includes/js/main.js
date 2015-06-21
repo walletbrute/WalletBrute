@@ -77,39 +77,62 @@ function showWallets() {
 	    },
 	});	 
 }
-
-function checkWalletBatchResult(name) {
-    $.ajax({
+function batchQuery(name) {
+	$.ajax({
         type: 'POST',
-		url: 'includes/processor/processor.php?action=checkWalletBatchResult&id='+name,
+        async: true,
+		url: 'includes/processor/processor.php?action=batchQuery&name='+name,
 		success: function(response){
-			//alert(outputDiv);
-			$('#files').html('');
-			$('#files').show();
-	        $('#files').append('<div style="text-align:left;font-size:1.5em;">Your session key for this file is <a href="../includes/temp/'+name+'.log"><span style="font-weight:bold;font-size:1.5em;">'+name+'</span></a>.</div>\n');
-			$('#files').append('<div id="batchResult">'+response+'</div>');
+			$('#liveResult').html(response);
 		},
 		error:function(){
 			//alert('error');
 		}
 	});	
+	//alert(outputDiv);
+	
 }
+
  
 function checkWalletBatch(name) {
 	$.ajax({
         type: 'POST',
+        async: true,
 		url: 'includes/processor/processor.php?action=checkWalletBatch&name='+name,
-		success: function(response){
-			//alert('success:' +response);
+		success: function(response){	
+			checkWalletBatchTwo(name);
 		},
 		error:function(){
 			//alert('error');
 		}
 	});	
-	setTimeout('checkWalletBatchResult('+name+')',3000);
+	$('#files').html('');
+	$('#files').show();
+    $('#files').append('<div style="text-align:left;font-size:2em;">Your session key for this file is <a href="../includes/temp/'+name+'.html"><span style="font-weight:bold;font-size:2em;">'+name+'</span></a>.</div>\n');
+    $('#files').append('\n\nFirst we will generate private keys and public addresses...\n\n');
+    $('#files').append('<div id="liveResult"></div>');
+	
+	setInterval(function(){
+		batchQuery(name);
+		$('html, body').animate({scrollTop:$(document).height()}, 'slow');
+	},1000);
 }
 
+function checkWalletBatchTwo(name) {
+	$.ajax({
+        type: 'POST',
+        async: true,
+		url: 'includes/processor/processor.php?action=checkWalletBatchTwo&name='+name,
+		success: function(response){
 
+		},
+		error:function(){
+			//alert('error');
+		}
+	});	
+	//alert(outputDiv);
+	
+}
 
 
 
@@ -183,7 +206,15 @@ function checkWallet() {
 	 })
 }
 
-
-
-
-
+function dbStatus() {
+	$.ajax({
+        type: 'POST',
+        async: true,
+		url: '//www.walletbrute.com/includes/processor/processor.php?action=dbQuery',
+		success: function(response){
+			$('#dbStatus').html(response);
+		},
+		error:function(){
+		}
+	});	
+}

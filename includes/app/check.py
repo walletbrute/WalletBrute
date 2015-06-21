@@ -35,7 +35,10 @@ if __name__ == "__main__":
   word = str(sys.argv[1])
 #  firstseen = os.popen("GET http://blockchain.info/q/addressfirstseen/" + str(bcaddy)).read()
 #  amount = os.popen("GET http://blockchain.info/q/addressbalance/" + str(bcaddy)).read()
+#  if str(firstseen) == "null":
   print word + "," + str(privatekeysha) + "," + str(bcaddy)
+#  else:
+#    print word + "," + str(privatekeysha) + "," + str(bcaddy) + ",Yes"
   #print "brainwallet string: " + word
   #print "private key: " + str(privatekeysha)
   #print "bitcoin address: " + str(bcaddy)
@@ -49,21 +52,21 @@ if __name__ == "__main__":
 
 
   # Write to MySQL added by JS
-  balance=0
-  from time import gmtime, strftime
-  timestamp=strftime("%Y-%m-%d %H:%M:%S")
-  import mysql.connector
-  cnx = mysql.connector.connect(user='bitcoin', password='b1tc01n',
-              host='127.0.0.1',
-              database='bitcoin')
-  cursor = cnx.cursor()
+#  balance=0
+#  from time import gmtime, strftime
+#  timestamp=strftime("%Y-%m-%d %H:%M:%S")
+#  import mysql.connector
+  #cnx = mysql.connector.connect(user='bitcoin', password='b1tc01n',
+  #            host='127.0.0.1',
+  #            database='bitcoin')
+  #cursor = cnx.cursor()
   # Insert new employee
   #cursor.execute("INSERT INTO wallets_found VALUES (%s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE received_bitcoins='%s', current_balance='%s',", (str(privatekeysha),str(bcaddy),word,amount,0,timestamp,0,amount))
-  cursor.execute("INSERT INTO wallets_found VALUES (%s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE current_balance='%s', last_updated='%s'", (str(privatekeysha),str(bcaddy),word,balance,0,timestamp,balance,0))
+  #cursor.execute("INSERT INTO wallets_found VALUES (%s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE current_balance='%s', last_updated='%s'", (str(privatekeysha),str(bcaddy),word,balance,0,timestamp,balance,0))
   #cursor.execute("INSERT INTO wallets_found VALUES (%s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE received_bitcoins='%s', current_balance='%s'", (0,0,0,0,0,0,0,0))
-  wallet_id = cursor.lastrowid
+  #wallet_id = cursor.lastrowid
   # Make sure data is committed to the database
-  cnx.commit()
-  cursor.close()
-  cnx.close()
+  #cnx.commit()
+  #cursor.close()
+  #cnx.close()
 
