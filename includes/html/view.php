@@ -15,6 +15,7 @@
             <th><!--<span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>--> Balance</th>
             <th><!--<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>--> Received</th>
             <th><!--<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>--> Last Updated</th>
+            <th><!--<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>--> Exists</th>
         </tr>
     </thead>
 
@@ -26,6 +27,7 @@
             <th><!--<span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>--> Balance</th>
             <th><!--<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>--> Received</th>
             <th><!--<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>--> Last Updated</th>
+            <th><!--<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>--> Exists</th>
         </tr>
     </tfoot>
 </table>

@@ -67,6 +67,12 @@ function showWallets() {
 	    "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
 	            $('td:eq(2)', nRow).html('<a href="https://blockchain.info/address/' + aData[2] + '" target="_new">' + aData[2] + '</a>');
 				//$('td:eq(5)', nRow).css('font-size','.7em');
+				var walletStatus = $('td:eq(6)', nRow).html();
+				if(walletStatus == "No") { 
+					$('td:eq(6)', nRow).parent().css('background-color','#fff');	
+				} else {
+					$('td:eq(6)', nRow).parent().css('background-color','#ffffcc');
+				}
 	            return nRow;
 	    },
 	});	 
@@ -113,76 +119,79 @@ function checkWalletBatch() {
 		}
 	});	
 }*/
+
+
+
+
 function checkWallet() {
 	var guess = $('#pass').val();
 	var guessAddr = $('#addr').val();
 	var privateKey = $('#sec').val();
 	var publicKey = $('#pub').val();
-	//alert(guess,guessAddr);
-	$('#walletCheckAPIPre').html('');
-	//$('#walletCheckResults').show();
-	//$('#walletCheckInput').hide();
 	$('#walletCheckResults').html('<center><img style="height:200px;" src="includes/images/loader.gif" style="text-align:center;margin-bottom:0px;padding-bottom:-20px;"></center>');
-	$('#walletCheckLoader').show();
-	$.ajax({
-        type: 'GET',
-        async: true,
-		url: 'https://blockchain.info/q/addressbalance/'+guessAddr,
-		success: function(response){
-			//var done = function(){
-				$("#walletCheckLoader").hide();
-				$("#walletCheckResults").html('<div id="walletCheckAPIPre"></div>');
-				
-				var div = document.getElementById('walletCheckAPIPre');
-				div.innerHTML = div.innerHTML + 'Passphrase: '+guess+'...\n';
-				var balance = response;
-				div.innerHTML = div.innerHTML + 'Balance: '+response+' BTC\n';
-				$.ajax({
-			        type: 'GET',
-			        async: false,
-					url: 'https://blockchain.info/q/getreceivedbyaddress/'+guessAddr,
-					success: function(response){
-						//$("#walletCheckAPIPre").appendChild('Total Received (Satoshi): '+response).fadeIn("slow");
-						var received = response / 100000000;
-						div.innerHTML = div.innerHTML + 'Received by Address: '+received+' BTC\n';
-						$.ajax({
-					        type: 'POST',
-					        async: true,
-							url: 'includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received,
-							success: function(response){
-								//alert('success:' +response);
-							},
-							error:function(){
-								//alert('error');
-							}
-						});	
-						$.ajax({
-					        type: 'POST',
-					        async: true,
-							url: '//www.walletbrute.com/includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received,
-							success: function(response){
-								//alert('success:' +response);
-							},
-							error:function(){
-								//alert('error');
-							}
-						});	
-					},
-					error:function(response){
-						$('#walletCheckLoader').show();
-						$('#walletCheckAPIPre').html('There was a system failure of some sort...').show();
-					}
-				});	
-			//};
-			//setTimeout(done, 500);
-			//setTimeout(done, 500);
-		},
-		error:function(response){
-			$('#walletCheckLoader').hide();
-			$('#walletCheckAPIPre').html('There was a system failure of some sort...').show();
-		}
-	});	
+	$.getJSON('https://bitcoin.toshi.io/api/v0/addresses/'+guessAddr, function(data) {
+     })
+     .success(function(data) { 
+	    var balance = data.balance / 100000000;
+		var received = data.received / 100000000;
+		$("#walletCheckResults").html('<div id="walletCheckAPIPre"></div>');
+		var div = document.getElementById('walletCheckAPIPre');
+		if(isEmpty(guess)) { var guessFinal = '[Empty]'; } else { var guessFinal = guess; }
+		div.innerHTML = div.innerHTML + '<div style="font-size:1.5em;border-bottom:1px solid #ddd;">Passphrase: <span style="font-weight:bold;font-size:1.3em;float:right;">'+guessFinal+'</span></div>\n';
+		div.innerHTML = div.innerHTML + '<div style="font-size:1.5em;border-bottom:1px solid #ddd;">Balance: <span style="font-weight:bold;font-size:1.3em;float:right;">'+balance+' BTC</span></div>\n';
+		div.innerHTML = div.innerHTML + '<div style="font-size:1.5em;border-bottom:1px solid #ddd;">Received by Address: <span style="font-weight:bold;font-size:1.3em;float:right;">'+received+' BTC</span></div>';
+		$.ajax({
+	        type: 'POST',
+	        async: true,
+			url: 'includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received+'&exists=yes',
+			success: function(response){
+			},
+			error:function(){
+				$('#walletCheckResults').html('Problem submitting to local database...').show();
+			}
+		});	
+		$.ajax({
+	        type: 'POST',
+	        async: true,
+			url: '//www.walletbrute.com/includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received+'&exists=yes',
+			success: function(response){
+			},
+			error:function(){
+				$('#walletCheckResults').html('Problem submitting to the WalletBrute Global Database...').show();
+			}
+		});		
+		
+	 })
+	 .error(function(data) { 
+	    var balance = 0;
+		var received = 0;
+		$("#walletCheckResults").html('<div id="walletCheckAPIPre"></div>');
+		var div = document.getElementById('walletCheckAPIPre');
+		div.innerHTML = div.innerHTML + 'Wallet does not yet exist...\n';	
+		$.ajax({
+	        type: 'POST',
+	        async: true,
+			url: 'includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received+'&exists=no',
+			success: function(response){
+			},
+			error:function(){
+				$('#walletCheckResults').html('Problem submitting to local database...').show();
+			}
+		});	
+		$.ajax({
+	        type: 'POST',
+	        async: true,
+			url: '//www.walletbrute.com/includes/processor/processor.php?action=checkWallet&guess='+guess+'&guessAddr='+guessAddr+'&private='+privateKey+'&public='+publicKey+'&balance='+balance+'&received='+received+'&exists=no',
+			success: function(response){
+			},
+			error:function(){
+				$('#walletCheckResults').html('Problem submitting to the WalletBrute Global Database...').show();
+			}
+		});			
+			 
+	 })
 }
+
 
 
 

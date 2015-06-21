@@ -59,7 +59,7 @@ $( document ).ready(function() {
 	$('#dev_tab > pre > .f1:first-child').css('background-color','#66CD00').css('color','#000').css('border-bottom','1px dashed #000').css('font-weight','bold').css('font-size','1.2em');
 	
 	//Check Wallet Every Stroke
-	$('#pass').keypress(function(e){
+	$('#pass').keyup(function(e){
 		var pass = $(this).val();
 		var addr = $('#addr').val();
 		var code = String.fromCharCode(e.which);
@@ -102,7 +102,7 @@ $( document ).ready(function() {
 	showWallets();
 	setInterval (function(){
 		$('#wallets_found').dataTable()._fnAjaxUpdate();
-	},1000);
+	},5000);
 
 	
 	showRates();
@@ -141,8 +141,9 @@ $( document ).ready(function() {
 	        .parent().addClass($.support.fileInput ? undefined : 'disabled');
 	});
 
-
-
+	$("html, body").animate({ scrollTop: 0 }, "slower");
+	$("html, body").animate({ scrollBottom: 0 }, "slower");
+	$("html, body").animate({ scrollTop: 0 }, "slower");
 
 });
 </script>

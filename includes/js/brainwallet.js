@@ -266,7 +266,7 @@
         $('#genAddrURL').attr('title', addr);
         //WalletBrute Specific Modifications to BrainWallet Source
         //checkWallet();
-        $('#genAddrQR > img').css('width','54px').css('height','54px');
+        $('#genAddrQR > img').css('width','129px').css('height','129px');
         checkWallet();
     }
 
