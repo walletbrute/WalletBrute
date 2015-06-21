@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2015 at 04:26 AM
+-- Generation Time: Jun 21, 2015 at 11:54 AM
 -- Server version: 5.5.43-MariaDB-1ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.9
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `bitcoin`
+-- Database: `walletbrute`
 --
 
 -- --------------------------------------------------------
@@ -26,13 +26,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `wallets_found`
 --
 
+DROP TABLE IF EXISTS `wallets_found`;
 CREATE TABLE IF NOT EXISTS `wallets_found` (
   `private_key` varchar(256) NOT NULL,
+  `public_key` varchar(9999) NOT NULL,
   `wallet_address` varchar(256) NOT NULL,
   `dictionary_word` varchar(256) NOT NULL,
   `current_balance` decimal(11,8) NOT NULL,
   `received_bitcoins` decimal(11,8) NOT NULL,
-  `last_updated` varchar(256) NOT NULL
+  `last_updated` varchar(256) NOT NULL,
+  `wallet_exists` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
