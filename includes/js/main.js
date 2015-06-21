@@ -114,7 +114,7 @@ function checkWalletBatch(name) {
 	
 	setInterval(function(){
 		batchQuery(name);
-		$('html, body').animate({scrollTop:$(document).height()}, 'slow');
+		//$('html, body').animate({scrollTop:$(document).height()}, 'slow');
 	},1000);
 }
 
