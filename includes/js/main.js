@@ -30,7 +30,8 @@ function showRates() {
 	$('#world_rates').dataTable( {
 	    "processing": true,
 	    "serverSide": false,
-	    "pageLength": 5,
+	    "pageLength": 25,
+	    "order": [[ 0, "desc" ]],
 	    "ajax": "includes/processor/processor.php?action=show_rates",
 	    "fnDrawCallback": function( oSettings ) {
 		    $('#world_rates_wrapper .col-sm-12:first').css('margin-top','20px').css('margin-bottom','20px').css('border-top','1px solid #ddd').css('border-bottom','1px solid #ddd');
@@ -41,11 +42,14 @@ function showRates() {
 }
 
 function showWallets() {
+	$.fn.dataTable.moment('MM-DD-YYYY HH:mm:ss');
+
+	//m-d-Y H:i:s A
 	$('#wallets_found').dataTable( {
 	    "processing": false,
 	    "serverSide": true,
-	    "pageLength": 5,
-	    "order": [[ 3, "desc" ]],
+	    "pageLength": 25,
+	    "order": [[ 5, "desc" ]],
 	    "ajax": "includes/processor/processor.php?action=wallets_found",
 	    "fnDrawCallback": function( oSettings ) {
 		    //$('#wallets_found').css('font-size','.8em');
@@ -62,7 +66,7 @@ function showWallets() {
 	    },
 	    "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
 	            $('td:eq(2)', nRow).html('<a href="https://blockchain.info/address/' + aData[2] + '" target="_new">' + aData[2] + '</a>');
-				$('td:eq(5)', nRow).css('font-size','.7em');
+				//$('td:eq(5)', nRow).css('font-size','.7em');
 	            return nRow;
 	    },
 	});	 

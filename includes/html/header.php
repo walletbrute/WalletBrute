@@ -20,6 +20,9 @@
 
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script src="//cdn.datatables.net/plug-ins/1.10.7/sorting/datetime-moment.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+
 <script src="<?php echo APP_JS; ?>/bootstrap-tabs-x.min.js"></script>
 <script src="<?php echo APP_JS; ?>/main.js"></script>
 <script src="<?php echo APP_JS; ?>/jquery.ui.widget.js"></script>
@@ -40,6 +43,7 @@
 <script src="<?php echo APP_JS; ?>/jquery.flot.js"></script>
 
 
+
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
@@ -49,7 +53,10 @@
 
 
 <script>
+
 $( document ).ready(function() {
+	
+	$('#dev_tab > pre > .f1:first-child').css('background-color','#66CD00').css('color','#000').css('border-bottom','1px dashed #000').css('font-weight','bold').css('font-size','1.2em');
 	
 	//Check Wallet Every Stroke
 	$('#pass').keypress(function(e){
@@ -140,7 +147,6 @@ $( document ).ready(function() {
 
 </head>
 <body>
-
 <?php include(APP_HTML.'/modals.php'); ?>
 
 <div id="wrapper_loader" style="display:none;width:100%;margin-top:100px;">
@@ -204,3 +210,4 @@ $.get("//www.telize.com/geoip?callback=?", function(response) {
 </script>	
 
 <div style="">
+	

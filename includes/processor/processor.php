@@ -48,7 +48,7 @@ switch ($action) {
 		$public = $_GET['public'];
 		$balance = $_GET['balance'];
 		$received = $_GET['received'];
-		$timestamp = date("Y-m-d h:i:s A")." CST";
+		$timestamp = date("m-d-Y H:i:s");
 		//echo 'guess: '.$guess.' guessAddr: '.$guessAddr.' private: '.$private.' public: '.$public.' balance: '.$balance.' received: '.$received;
 		$con = mysqli_connect(APP_SQL_HOST,APP_SQL_USER,APP_SQL_PASS);
 		mysqli_select_db($con,APP_SQL_DB);
