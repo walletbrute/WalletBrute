@@ -77,48 +77,39 @@ function showWallets() {
 	    },
 	});	 
 }
- 
-function checkWalletBatch() {
-	alert('started check wallet file upload batch');
-	var file = $('#file-0a').val();
-	$.ajax({
+
+function checkWalletBatchResult(name) {
+    $.ajax({
         type: 'POST',
-		url: 'includes/processor/processor.php?action=checkWalletBatch&file='+file,
-	//data: $('#checkWalletFormForm').serialize(), 
-        timeout: 99000,             
+		url: 'includes/processor/processor.php?action=checkWalletBatchResult&id='+name,
 		success: function(response){
-			alert('success:' +response);
+			//alert(outputDiv);
+			$('#files').html('');
+			$('#files').show();
+	        $('#files').append('<div style="text-align:left;font-size:1.5em;">Your session key for this file is <a href="../includes/temp/'+name+'.log"><span style="font-weight:bold;font-size:1.5em;">'+name+'</span></a>.</div>\n');
+			$('#files').append('<div id="batchResult">'+response+'</div>');
 		},
 		error:function(){
-			alert('error');
+			//alert('error');
 		}
 	});	
 }
-
-/*function checkWallet(guess) {
-	$('#walletCheckResults').show();
-	//$('#walletCheckInput').hide();
-	$('#walletCheckResults').html('<center><pre><img style="height:200px;" src="includes/images/loader.gif" style="text-align:center;margin-bottom:0px;padding-bottom:-20px;"></pre></center>');
-	$('#walletCheckLoader').show();
+ 
+function checkWalletBatch(name) {
 	$.ajax({
         type: 'POST',
-		url: 'includes/processor/processor.php?action=checkWallet&phrase='+guess,
-        data: $('#checkWalletForm').serialize(), 
-        timeout: 99000,             
+		url: 'includes/processor/processor.php?action=checkWalletBatch&name='+name,
 		success: function(response){
-			var done = function(){
-				$("#walletCheckLoader").fadeOut("slow");
-				$("#walletCheckResults").html(response).fadeIn("slow");
-			};
-			setTimeout(done, 1000);
-			setTimeout(done, 1000);
+			//alert('success:' +response);
 		},
 		error:function(){
-			$('#walletCheckLoader').fadeOut("slow");
-			$('#walletCheckResults').html('There was a system failure of some sort...').fadeIn("slow");
+			//alert('error');
 		}
 	});	
-}*/
+	setTimeout('checkWalletBatchResult('+name+')',3000);
+}
+
+
 
 
 

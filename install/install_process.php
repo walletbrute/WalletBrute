@@ -90,30 +90,23 @@ switch ($step) {
 	case "Install_Step_Three":
     	$installDomain = $_GET['installDomain'];	
     	$installDir = $_GET['installDir'];	
-    	$installPython = $_GET['installPython'];	
     	if(empty($installDomain)) {
 	    	header('HTTP/1.1 500 Application Booboo');
     	} 
     	if(empty($installDir)) {
 	    	header('HTTP/1.1 500 Application Booboo');
-    	} 
-    	if(empty($installPython)) {
-	    	header('HTTP/1.1 500 Application Booboo');
     	}     	
 		$defaultConfig=file_get_contents('config.new');
 		$defaultConfig=str_replace("INSERT_APP_DOMAIN","$installDomain",$defaultConfig);
 		$defaultConfig=str_replace("INSERT_APP_DIR","$installDir",$defaultConfig);
-		$defaultConfig=str_replace("INSERT_APP_PYTHON","$installPython",$defaultConfig);
 		file_put_contents('config.new', $defaultConfig);
 	break;
 
 	//Install Step Four
 	case "Install_Step_Four":		
 		//Template out the Config.php
-		system('mv app.new ../includes/app/app.py');
 		system('mv config.new ../includes/config.php');
-		system('rm -rf ../install*');
-		system('chmod -R +x ../includes/app/app.py');
+		//system('rm -rf ../install*');
 	break;
 	
 }

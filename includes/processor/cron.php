@@ -21,7 +21,7 @@ system('mkdir '.APP_DIR_TEMP);
 
 //Get Exchange Rates
 //Enable NON Logged Update
-system('cd '.APP_DIR_TEMP.'/ && rm rates; wget https://bitpay.com/api/rates');
+system('cd '.APP_DIR_TEMP.'/ && rm rates*; wget https://bitpay.com/api/rates');
 //Enable Logged Update
 //system('cd '.APP_DIR_TEMP.'/ && rm rates; wget https://bitpay.com/api/rates 2>>'.APP_LOG);
 

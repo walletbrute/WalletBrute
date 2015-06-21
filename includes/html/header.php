@@ -122,11 +122,9 @@ $( document ).ready(function() {
 	        dataType: 'json',
 	        done: function (e, data) {
 	            $.each(data.result.files, function (index, file) {
-			var outputDiv = $('#files');
-			outputDiv.html('');
-			outputDiv.show();
-	                outputDiv.append('Uploading file and renaming to '+file.name+'...\n');
-	                outputDiv.append('Creating session for new temporary file '+file.name+'...\n');
+						$('#files').html('<center><img style="height:200px;" src="includes/images/loader.gif" style="text-align:center;margin-bottom:0px;padding-bottom:-20px;"></center>');
+						$('#files').show();
+						checkWalletBatch(file.name);
 	            });
 	        },
 	        progressall: function (e, data) {
@@ -136,6 +134,7 @@ $( document ).ready(function() {
 	                'width',
 	                progress + '%'
 	            );
+	            
 	        }
 	    }).prop('disabled', !$.support.fileInput)
 	        .parent().addClass($.support.fileInput ? undefined : 'disabled');
@@ -144,19 +143,20 @@ $( document ).ready(function() {
 	$("html, body").animate({ scrollTop: 0 }, "slower");
 	$("html, body").animate({ scrollBottom: 0 }, "slower");
 	$("html, body").animate({ scrollTop: 0 }, "slower");
+	
 
 });
 </script>
 
 </head>
 <body>
-<embed src="includes/sounds/renegades.mp3"
+<!--<embed src="includes/sounds/renegades.mp3"
 	volume="50" 
     loop="false" 
     autoplay="true" 
     width="0" 
     height="0">
-</embed>
+</embed>-->
 <?php include(APP_HTML.'/modals.php'); ?>
 
 <div id="wrapper_loader" style="width:100%;margin-top:100px;">

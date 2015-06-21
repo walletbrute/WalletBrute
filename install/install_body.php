@@ -101,16 +101,11 @@
 		<div class="input-group input-group">
 			<span class="input-group-addon" id="sizing-addon1">Site Directory</span>
 			<input type="text" class="form-control" placeholder="/var/www/www.mysite.com/myapplication" aria-describedby="sizing-addon1" id="installDir">
-		</div>						
-		<br />
-		<div class="input-group input-group">
-			<span class="input-group-addon" id="sizing-addon1">Python Location</span>
-			<input type="text" class="form-control" placeholder="/usr/bin/python" aria-describedby="sizing-addon1" id="installPython" value="/usr/bin/python">
-		</div>						
+		</div>											
 		<br />
 		<div style="width:100%;text-align:left;">
-			<button class="btn btn-danger" type="submit" onClick="$('#installDomain').val('');$('#installDir').val('');$('#installPython').val('');">Clear Fields</button>
-			<button class="btn btn-success" type="submit" onClick="var installDomain = $('#installDomain').val();var installDir = $('#installDir').val();var installPython =  $('#installPython').val();installStepThree(installDomain,installDir,installPython);">Go to the Next Step</button>
+			<button class="btn btn-danger" type="submit" onClick="$('#installDomain').val('');$('#installDir').val('');">Clear Fields</button>
+			<button class="btn btn-success" type="submit" onClick="var installDomain = $('#installDomain').val();var installDir = $('#installDir').val();installStepThree(installDomain,installDir);">Go to the Next Step</button>
 		</div>
 	</div>	
 
@@ -206,7 +201,7 @@ function installStepTwo(installTitle) {
 	});
 }
 
-function installStepThree(installDomain,installDir,installPython) {
+function installStepThree(installDomain,installDir) {
 	if(! installDomain){
 	 	$('#installDomain').css('border-color','red');
  	} else {
@@ -217,14 +212,9 @@ function installStepThree(installDomain,installDir,installPython) {
  	} else {
 	 	$('#installDir').css('border-color','green');
 	} 
-	if(! installPython){
-	 	$('#installPython').css('border-color','red');
- 	} else {
-	 	$('#installPython').css('border-color','green');
-	} 			
 	$.ajax({
         type: 'POST',
-		url: 'install_process.php?step=Install_Step_Three&installDomain='+installDomain+'&installDir='+installDir+'&installPython='+installPython,
+		url: 'install_process.php?step=Install_Step_Three&installDomain='+installDomain+'&installDir='+installDir,
         timeout: 99000,             
 		success: function(response){
 			$('#installServerGlyph').removeClass().addClass('glyphicon glyphicon-ok');

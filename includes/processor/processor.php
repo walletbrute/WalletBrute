@@ -66,8 +66,34 @@ switch ($action) {
 
 	// Check Wallet Batch
 	case "checkWalletBatch":
+		$name = $_GET['name'];
+		//echo 'checking file: '.$name;
+		//screen -S test -X -p0 hardcopy
+		system('mv '.APP_INCLUDES.'/uploads/files/'.$name.' '.APP_INCLUDES.'/temp/'.$name);
+		system(APP_INCLUDES.'/app/run.sh '.APP_INCLUDES.'/app/check.py '.APP_INCLUDES.'/temp/'.$name.' > '.APP_INCLUDES.'/temp/'.$name.'.log; rm '.APP_INCLUDES.'/temp/'.$name);
 	break;
 
+	// Check Wallet Batch Result
+	case "checkWalletBatchResult":
+		$id = $_GET['id'];		
+		$file = file_get_contents(APP_INCLUDES.'/temp/'.$id.'.log');
+		echo $file;
+		
+		//for each line in file
+		//run the below and return the results to the user as well as insert   into mysql
+		$url = 'https://bitcoin.toshi.io/api/v0/addresses/1HZwkjkeaoZfTSaJxDw6aKkxp45agDiEzN';
+		$agent= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL,$url);
+		curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+		$result=curl_exec($ch);
+		curl_close($ch);
+		$object = json_decode($result,true);
+		$balance = $object['balance'];
+		$received = $object['received'];
+	break;
 
 }
 

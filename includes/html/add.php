@@ -102,4 +102,4 @@
 </div>
 <!-- The container for the uploaded files -->
 <pre id="files" class="files" style="font-size:.8em;display:none;"></pre>
-<br>
+<br />

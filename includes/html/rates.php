@@ -18,7 +18,7 @@
         </tr>
     </tfoot>
 </table>
-<hr>
+<!--<hr>
 <h2>BitCoin Value</h2>
 <hr>
 <div id="btcPriceGraphContainer" style=""></div>
@@ -115,4 +115,4 @@
 		plot.draw();
 	}, 40);
 	
-</script>
+</script>-->
