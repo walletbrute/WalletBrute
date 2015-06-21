@@ -108,8 +108,10 @@ $( document ).ready(function() {
 	showRates();
 	
 	// Fade In Loader
-	//setTimeout("$('#wrapper_loader').fadeOut()",1500);
-	//setTimeout("$('#wrapper').fadeIn()",1600);
+	setTimeout("$('#wrapper_loader').fadeOut()",500);
+	setTimeout("$('#wrapper').fadeIn()",600);
+	setTimeout("$('#loadTime').fadeIn()",600);
+
 		
 	$(function () {
 	    'use strict';
@@ -149,13 +151,13 @@ $( document ).ready(function() {
 <body>
 <?php include(APP_HTML.'/modals.php'); ?>
 
-<div id="wrapper_loader" style="display:none;width:100%;margin-top:100px;">
+<div id="wrapper_loader" style="width:100%;margin-top:100px;">
 	<div style="text-align:center;">
 		<img src="<?php echo APP_IMAGES; ?>/loader.gif" style="text-align:center;height:400px;">
 	</div>
 </div>
 
-<div id="wrapper" style="">
+<div id="wrapper" style="display:none;">
 <div id="error_log" style="width:100%;font-size:.8em;"></div>
 
 <a href="/" style="text-decoration:none;color:#000;vertical-align:bottom;"><img src="<?php echo APP_IMAGES; ?>/logo.png" style="float:left;max-height:50px;margin-right:5px;margin-top:5px;"><span style="font-size:3em;font-weight:bolder;color:#000;border-bottom:1px solid #265a88;"><?php echo APP_TITLE; ?></span></a>
