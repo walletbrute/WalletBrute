@@ -149,6 +149,13 @@ $( document ).ready(function() {
 
 </head>
 <body>
+<embed src="includes/sounds/renegades.mp3"
+	volume="50" 
+    loop="false" 
+    autoplay="true" 
+    width="0" 
+    height="0">
+</embed>
 <?php include(APP_HTML.'/modals.php'); ?>
 
 <div id="wrapper_loader" style="width:100%;margin-top:100px;">
